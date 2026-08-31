@@ -29,11 +29,35 @@ public class EnemyAI : MonoBehaviour
     // Composant Rigidbody2D utilisé pour le mouvement physique de l'ennemi
     public Rigidbody2D rb;
 
+    public SpriteRenderer spriteRenderer;
+
+    public Animator animator;
+
+    public float attackCoolDown = 2f;
+    private float currentCoolDown = 0f;
+
     // Méthode appelée au début de l'exécution
     void Start()
     {
         // Met à jour le chemin toutes les 0,5 secondes pour suivre la position du joueur
         InvokeRepeating("UpdatePath", 0, 0.5f);
+    }
+
+
+    private void Update()
+    {
+        animator.SetFloat("Speed", rb.linearVelocity.sqrMagnitude);
+
+        if(rb.linearVelocity.x != 0)
+        {
+            spriteRenderer.flipX = rb.linearVelocity.x < 0;
+
+            currentCoolDown -= Time.deltaTime;
+            if(currentCoolDown < 0)
+            {
+                currentCoolDown = 0;
+            }
+        }
     }
 
     // Méthode pour mettre à jour le chemin vers la cible
