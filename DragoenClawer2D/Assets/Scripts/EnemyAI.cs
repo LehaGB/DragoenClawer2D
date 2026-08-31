@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using System;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class EnemyAI : MonoBehaviour
 
     public Animator animator;
 
-    public float attackCoolDown = 2f;
+    public float attackCoolDown = 1f;
     private float currentCoolDown = 0f;
 
     // Méthode appelée au début de l'exécution
@@ -51,12 +52,12 @@ public class EnemyAI : MonoBehaviour
         if(rb.linearVelocity.x != 0)
         {
             spriteRenderer.flipX = rb.linearVelocity.x < 0;
+        }
 
-            currentCoolDown -= Time.deltaTime;
-            if(currentCoolDown < 0)
-            {
-                currentCoolDown = 0;
-            }
+        currentCoolDown = currentCoolDown - Time.deltaTime;
+        if (currentCoolDown < 0)
+        {
+            currentCoolDown = 0;
         }
     }
 
@@ -115,6 +116,26 @@ public class EnemyAI : MonoBehaviour
             {
                 currWp++;
             }
+            else
+            {
+                if (currentCoolDown <= 0)
+                {
+                    Attack();
+                }
+            }
         }
+    }
+
+    private void Attack()
+    {
+        animator.SetBool("isAttacking", true);
+        currentCoolDown = attackCoolDown;
+        animator.SetTrigger("Attack");
+        Debug.Log($"Атака вызвана. CoolDown установлен = {currentCoolDown}");
+    }
+
+    private void EndOfAttack()
+    {
+        animator.SetBool("isAttacking", false);
     }
 }

@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
                 if (Vector2.Dot(attackDirection, directionToEnemy) > 0)
                 {
                     Debug.Log("Враг атакован!!!");
-                    Destroy(collider.gameObject);
+                    //Destroy(collider.gameObject);
                 }
             }
         }
