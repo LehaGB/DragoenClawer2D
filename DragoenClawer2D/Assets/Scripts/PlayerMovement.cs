@@ -9,9 +9,14 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     private Vector2 _movement;
 
+    public PlayerHealth playerHealth;
+
     void Update()
     {
-        Move();
+        if (playerHealth.isAlive)
+        {
+            Move();
+        }  
     }
 
 

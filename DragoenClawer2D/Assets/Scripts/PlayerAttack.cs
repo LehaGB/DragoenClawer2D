@@ -8,9 +8,10 @@ public class PlayerAttack : MonoBehaviour
     public Animator animator;
 
     public SpriteRenderer spriteRenderer;
+    public PlayerHealth playerHealth;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && playerHealth.isAlive)
         {
             PerformAttack();
         }
