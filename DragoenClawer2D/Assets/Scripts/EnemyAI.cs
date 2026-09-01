@@ -116,12 +116,12 @@ public class EnemyAI : MonoBehaviour
             {
                 currWp++;
             }
-            else
+        }
+        else
+        {
+            if (currentCoolDown <= 0)
             {
-                if (currentCoolDown <= 0)
-                {
-                    Attack();
-                }
+                Attack();
             }
         }
     }
@@ -131,11 +131,21 @@ public class EnemyAI : MonoBehaviour
         animator.SetBool("isAttacking", true);
         currentCoolDown = attackCoolDown;
         animator.SetTrigger("Attack");
-        Debug.Log($"Атака вызвана. CoolDown установлен = {currentCoolDown}");
     }
 
     private void EndOfAttack()
     {
         animator.SetBool("isAttacking", false);
+
+        if(Vector2.Distance(transform.position, target.position) <= attackRange)
+        {
+            Destroy(target.gameObject);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
