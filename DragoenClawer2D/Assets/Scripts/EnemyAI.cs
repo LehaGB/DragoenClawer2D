@@ -184,5 +184,6 @@ public class EnemyAI : MonoBehaviour
     public void DisableEnemyVisual()
     {
         spriteRenderer.enabled = false;
+        Destroy(gameObject, 3f);
     }
 }
