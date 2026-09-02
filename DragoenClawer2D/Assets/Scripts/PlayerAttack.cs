@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
 
                 if (Vector2.Dot(attackDirection, directionToEnemy) > 0)
                 {
-                    EnemyAI enemyScript = GetComponent<EnemyAI>();
+                    EnemyAI enemyScript = collider.GetComponent<EnemyAI>();
                     enemyScript.TakeDamage(damage);
                 }
             }

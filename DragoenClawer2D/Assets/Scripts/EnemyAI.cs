@@ -34,7 +34,7 @@ public class EnemyAI : MonoBehaviour
 
     public Animator animator;
 
-    public float attackCoolDown = 1f;
+    public float attackCoolDown = 2f;
     public int damage = 1;
     public int maxHealt = 2;
     private bool isAlive = true;
@@ -179,5 +179,10 @@ public class EnemyAI : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
+    public void DisableEnemyVisual()
+    {
+        spriteRenderer.enabled = false;
     }
 }
