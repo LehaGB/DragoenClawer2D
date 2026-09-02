@@ -35,6 +35,7 @@ public class EnemyAI : MonoBehaviour
     public Animator animator;
 
     public float attackCoolDown = 2f;
+    public float detectionRange = 7f;
     public int damage = 1;
     public int maxHealt = 2;
     private bool isAlive = true;
@@ -76,9 +77,11 @@ public class EnemyAI : MonoBehaviour
     void UpdatePath()
     {
         // Vérifie si le Seeker est prêt à calculer un nouveau chemin
-        if (isAlive && seeker.IsDone())
+        if (isAlive && seeker.IsDone() && Vector2.Distance(transform.position, target.position) <= detectionRange)
+        {
             // Demande un nouveau chemin du Seeker entre la position actuelle et la cible
             seeker.StartPath(rb.position, target.position, OnPathComplete);
+        }
     }
 
     // Méthode appelée lorsque le Seeker a terminé de calculer un chemin
@@ -166,6 +169,7 @@ public class EnemyAI : MonoBehaviour
                 isAlive = false;
 
                 animator.SetTrigger("Die");
+                Destroy(gameObject, 1f);
             }
             else
             {
@@ -179,11 +183,13 @@ public class EnemyAI : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
 
     public void DisableEnemyVisual()
     {
         spriteRenderer.enabled = false;
-        Destroy(gameObject, 3f);
     }
 }

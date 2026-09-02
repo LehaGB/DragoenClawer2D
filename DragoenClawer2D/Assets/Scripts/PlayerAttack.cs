@@ -9,6 +9,8 @@ public class PlayerAttack : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
     public PlayerHealth playerHealth;
+
+    public int kcnkcbackForce = 5;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && playerHealth.isAlive)
@@ -35,6 +37,9 @@ public class PlayerAttack : MonoBehaviour
                 {
                     EnemyAI enemyScript = collider.GetComponent<EnemyAI>();
                     enemyScript.TakeDamage(damage);
+
+                    Vector2 kcnokcbackDirection = (collider.transform.position - transform.position).normalized;
+                    enemyScript.rb.AddForce(kcnokcbackDirection * kcnkcbackForce, ForceMode2D.Impulse);
                 }
             }
         }

@@ -1676,7 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8ddbc45e1d2fd4ab4bda5222363e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 3
+  moveSpeed: 5
   rigidbody2D: {fileID: 767313521}
   animator: {fileID: 767313525}
   spriteRenderer: {fileID: 767313523}
@@ -1795,6 +1795,7 @@ MonoBehaviour:
   animator: {fileID: 767313525}
   spriteRenderer: {fileID: 767313523}
   playerHealth: {fileID: 767313528}
+  kcnkcbackForce: 5
 --- !u!58 &767313527
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1843,7 +1844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e7b9c21c1a1ed45b0fc3669a68727c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxHealth: 3
+  maxHealth: 5
   isAlive: 1
   healthbarUI: {fileID: 1219109505}
   hpPrefab: {fileID: 3038811878797644764, guid: 34876e58e944a5044919f8a018cdf39a, type: 3}
@@ -1994,8 +1995,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1025826168}
   animator: {fileID: 1025826174}
   attackCoolDown: 2
+  detectionRange: 4
   damage: 1
-  maxHealt: 2
+  maxHealt: 5
 --- !u!114 &1025826172
 MonoBehaviour:
   m_ObjectHideFlags: 0
