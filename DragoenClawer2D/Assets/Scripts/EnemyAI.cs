@@ -35,9 +35,16 @@ public class EnemyAI : MonoBehaviour
     public Animator animator;
 
     public float attackCoolDown = 1f;
-    private float currentCoolDown = 0f;
-
     public int damage = 1;
+    public int maxHealt = 2;
+    private bool isAlive = true;
+    private float currentCoolDown = 0f;
+    private int currentHealt;
+
+    private void Awake()
+    {
+        currentHealt = maxHealt;
+    }
 
     // Méthode appelée au début de l'exécution
     void Start()
@@ -49,6 +56,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if (!isAlive) return;
+
         animator.SetFloat("Speed", rb.linearVelocity.sqrMagnitude);
 
         if(rb.linearVelocity.x != 0)
@@ -67,7 +76,7 @@ public class EnemyAI : MonoBehaviour
     void UpdatePath()
     {
         // Vérifie si le Seeker est prêt à calculer un nouveau chemin
-        if (seeker.IsDone())
+        if (isAlive && seeker.IsDone())
             // Demande un nouveau chemin du Seeker entre la position actuelle et la cible
             seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
@@ -87,7 +96,7 @@ public class EnemyAI : MonoBehaviour
     void FixedUpdate()
     {
         // Si aucun chemin n'a été calculé ou si tous les waypoints ont été atteints, ne fait rien
-        if (path == null || currWp >= path.vectorPath.Count)
+        if (path == null || currWp >= path.vectorPath.Count || !isAlive)
         {
             return;
         }
@@ -142,6 +151,27 @@ public class EnemyAI : MonoBehaviour
         if(Vector2.Distance(transform.position, target.position) <= attackRange)
         {
             target.GetComponent<PlayerHealth>().TakeDamge(damage);
+        }
+    }
+
+
+    public void TakeDamage(int damage)
+    {
+        if (isAlive)
+        {
+            currentHealt -= damage;
+
+            if(currentHealt <= 0)
+            {
+                isAlive = false;
+
+                animator.SetTrigger("Die");
+            }
+            else
+            {
+                animator.SetTrigger("Hit");
+                currentCoolDown = attackCoolDown;
+            }
         }
     }
 

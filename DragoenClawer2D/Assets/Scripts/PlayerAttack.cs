@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public float attackRange = 1.5f;
-    public int damage = 10;
+    public int damage = 1;
 
     public Animator animator;
 
@@ -33,8 +33,8 @@ public class PlayerAttack : MonoBehaviour
 
                 if (Vector2.Dot(attackDirection, directionToEnemy) > 0)
                 {
-                    Debug.Log("Враг атакован!!!");
-                    Destroy(collider.gameObject);
+                    EnemyAI enemyScript = GetComponent<EnemyAI>();
+                    enemyScript.TakeDamage(damage);
                 }
             }
         }
