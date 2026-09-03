@@ -7,11 +7,11 @@ public class CameraFallow : MonoBehaviour
     [SerializeField] private float timeOffset = 0.2f;
 
     private Vector3 velocity;
-    //void Start()
-    //{
-    //    if (target == null) return;
-    //    offset = transform.position - target.transform.position;
-    //}
+
+    private void Awake()
+    {
+        transform.position = target.position + offset;
+    }
 
     void LateUpdate()
     {
