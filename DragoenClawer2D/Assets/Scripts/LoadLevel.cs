@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LoadLevel : MonoBehaviour
@@ -8,7 +9,13 @@ public class LoadLevel : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene(levelToLoad);
+            StartCoroutine(LoadSceneWithFade(levelToLoad));
         }
+    }
+
+    private IEnumerator LoadSceneWithFade(string sceneName)
+    {
+        yield return FadeManager.Instance.FadeOut();
+        yield return SceneManager.LoadSceneAsync(sceneName);
     }
 }
