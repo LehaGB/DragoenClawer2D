@@ -34,6 +34,8 @@ public class EnemyAI : MonoBehaviour
 
     public Animator animator;
 
+    public GameObject coinsPrefab;
+
     public float attackCoolDown = 2f;
     public float detectionRange = 7f;
     public int damage = 1;
@@ -169,6 +171,7 @@ public class EnemyAI : MonoBehaviour
                 isAlive = false;
 
                 animator.SetTrigger("Die");
+                Instantiate(coinsPrefab, transform.position, transform.rotation);
                 Destroy(gameObject, 1f);
             }
             else

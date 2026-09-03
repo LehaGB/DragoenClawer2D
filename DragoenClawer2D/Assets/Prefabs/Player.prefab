@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3214013483023460341}
   - component: {fileID: 1364562115515358217}
   - component: {fileID: 6204679034678343116}
+  - component: {fileID: 8732392042989263455}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -236,3 +237,17 @@ MonoBehaviour:
   hpPrefab: {fileID: 3038811878797644764, guid: 34876e58e944a5044919f8a018cdf39a, type: 3}
   animator: {fileID: 228814221951181780}
   spriteRenderer: {fileID: 5689169644639508462}
+--- !u!114 &8732392042989263455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830134337152097555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aec607a672f0e84fb9ef8c1f09f341d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMoney
+  coinText: {fileID: 0}
+  currentCoins: 0

@@ -145,6 +145,7 @@ MonoBehaviour:
   rb: {fileID: 2592645491631544792}
   spriteRenderer: {fileID: 1271537060817362268}
   animator: {fileID: 5421542177973688004}
+  coinsPrefab: {fileID: 3603865380294331925, guid: 5fe8bc1847690424888d41611409dff6, type: 3}
   attackCoolDown: 2
   detectionRange: 4
   damage: 1
