@@ -4,17 +4,10 @@ using UnityEngine.UI;
 
 public class PlayerMoney : MonoBehaviour
 {
-    public static PlayerMoney Instance;
     public Text coinText;
     public int currentCoins;
 
-    private void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-    }
+   
 
     private void Start()
     {
@@ -33,9 +26,9 @@ public class PlayerMoney : MonoBehaviour
         coinText.text = currentCoins.ToString();
     }
 
-    public void AddCoin()
+    public void AddCoin(int coinsCount = 1)
     {
-        currentCoins++;
+        currentCoins = currentCoins + coinsCount;
         UpdateCoinsCount();
     }
 }

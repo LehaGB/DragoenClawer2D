@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1364562115515358217}
   - component: {fileID: 6204679034678343116}
   - component: {fileID: 8732392042989263455}
+  - component: {fileID: 5000132984535843754}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -251,3 +252,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoney
   coinText: {fileID: 0}
   currentCoins: 0
+--- !u!114 &5000132984535843754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830134337152097555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d39a51d0580dc41a846c2938fb9c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBase
+  playerAttack: {fileID: 3214013483023460341}
+  playerHealth: {fileID: 6204679034678343116}
+  playerMovement: {fileID: 4012631853950012001}
+  playerMoney: {fileID: 8732392042989263455}

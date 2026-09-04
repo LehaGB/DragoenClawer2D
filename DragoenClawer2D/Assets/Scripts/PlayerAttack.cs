@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -43,6 +44,12 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    public void MultiplyDamage(float damageMultiplier)
+    {
+        damage = (int)Mathf.CeilToInt(damage * damageMultiplier);
     }
 
     private void OnDrawGizmosSelected()

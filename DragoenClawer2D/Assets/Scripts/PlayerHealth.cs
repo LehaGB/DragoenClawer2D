@@ -50,4 +50,11 @@ public class PlayerHealth : MonoBehaviour
     {
         spriteRenderer.enabled = false;
     }
+
+    public void IncreaseMaxHealth(int hpCount)
+    {
+        maxHealth += hpCount;
+        cuurentHealth += hpCount;
+        UpdeteHealthbarUI();
+    }
 }
