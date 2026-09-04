@@ -4,7 +4,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 3;
     public bool isAlive = true;
-    private int cuurentHealth;
+    public int cuurentHealth;
 
     public Transform healthbarUI;
     public GameObject hpPrefab;
